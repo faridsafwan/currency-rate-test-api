@@ -11,9 +11,12 @@ export class CurrencyController {
   }
 
   @Get()
-  findOne(@Query() query) {
-    console.log(query, 'query');
-
+  async findOne(@Query() query) {
+    const findCurrency = await this.currencyService.findOne(query.q);
+    if (!findCurrency) {
+      await this.currencyService.handleCron();
+      return await this.currencyService.findOne(query.q);
+    }
     return this.currencyService.findOne(query.q);
   }
 }

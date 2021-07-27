@@ -34,7 +34,7 @@ export class CurrencyService {
             params: {
               q: iterator,
               compact: 'ultra',
-              apiKey: '4fde8650caf1344c2ec4',
+              apiKey: '20e98cd18d617b702441',
             },
           })
           .toPromise()
